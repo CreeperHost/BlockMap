@@ -188,9 +188,14 @@ class ChunkRenderer_1_18 extends ChunkRenderer {
 						if (s < lowestLoadedSection) {
 							try {
 								var section = sections.get(s);
-								loadedSections[s + 4] = renderSection(section, blockColors);
+								if (section == null) {
+									/* Replace with surrogate empty section */
+									loadedSections[s + 4] = new BlockColor[4096];
+								} else {
+									loadedSections[s + 4] = renderSection(section, blockColors);
+								}
 								/* Read the biome for the top layer */
-								if (loadedTopBiomes == null) {
+								if (loadedTopBiomes == null && section != null) {
 									loadedTopBiomes = new String[16];
 									CompoundTag biomes = section.get("biomes").getAsCompoundTag().get();
 
