@@ -21,9 +21,9 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.joml.Vector2i;
 
@@ -43,7 +43,7 @@ import picocli.CommandLine.Command;
 @Command
 public class Generator {
 
-	private static Log			log							= LogFactory.getLog(Generator.class);
+	private static Logger log = LogManager.getLogger(Generator.class);
 
 	/*
 	 * All output paths are listed here. They are split into three categories: main-resources, test-resources, other. The resources get copied

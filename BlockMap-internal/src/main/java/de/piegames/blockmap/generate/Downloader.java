@@ -15,9 +15,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -28,10 +25,12 @@ import com.vdurmont.semver4j.Semver.SemverType;
 
 import de.piegames.blockmap.MinecraftVersion;
 import de.piegames.blockmap.generate.Downloader.VersionManifest.Version;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Downloader {
 
-	private static Log log = LogFactory.getLog(Downloader.class);
+	private static Logger log = LogManager.getLogger(Downloader.class);
 	private static final String	DOWNLOAD_URL	= "https://launchermeta.mojang.com/mc/game/version_manifest.json";
 
 	public static VersionManifest downloadManifest() throws IOException {

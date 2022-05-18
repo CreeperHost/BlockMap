@@ -18,8 +18,8 @@ import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageOutputStream;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joml.Vector2d;
 import org.joml.Vector2i;
 
@@ -36,7 +36,7 @@ import javafx.scene.image.WritableImage;
 
 public class Screenshots {
 
-	private static Log log = LogFactory.getLog(Screenshots.class);
+	private static Logger log = LogManager.getLogger(Screenshots.class);
 
 	public static void generateDemoRenders() throws IOException {
 		RenderSettings settings = new RenderSettings();

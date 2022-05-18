@@ -10,8 +10,8 @@
 
 
 include 'BlockMap-core'
-//include 'BlockMap-gui'
+include 'BlockMap-gui'
 include 'BlockMap-cli'
-//include 'BlockMap-internal'
+include 'BlockMap-internal'
 
 rootProject.name = 'BlockMap'

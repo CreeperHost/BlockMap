@@ -79,14 +79,14 @@ subprojects {
 //		xml.enabled = true
 //	}
 //}
-//
-//task regenerate(type: GradleBuild) {
-//	group 'Generation'
-//	description 'Regenerate all resources except screenshots'
-//    // All other generators are called as transitive dependencies
-//    tasks = ['BlockMap-internal:generateSources', 'BlockMap-internal:generateData']
-//}
-//
+
+task regenerate(type: GradleBuild) {
+	group 'Generation'
+	description 'Regenerate all resources except screenshots'
+    // All other generators are called as transitive dependencies
+    tasks = ['BlockMap-internal:generateSources', 'BlockMap-internal:generateData']
+}
+
 //task initEclipse(type: GradleBuild) {
 //	group 'IDE'
 //	tasks = ['regenerate', 'cleanEclipse', 'eclipse']

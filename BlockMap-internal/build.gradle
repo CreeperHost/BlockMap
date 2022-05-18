@@ -1,5 +1,5 @@
 plugins {
-    id 'com.jaredsburrows.license'
+//    id 'com.jaredsburrows.license'
     id 'org.openjfx.javafxplugin' version '0.0.10'
 	id "me.champeau.gradle.jmh" version "0.5.3"
 }

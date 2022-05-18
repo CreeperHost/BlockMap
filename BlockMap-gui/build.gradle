@@ -3,7 +3,7 @@ import static org.apache.tools.ant.taskdefs.condition.Os.*
 plugins {
     id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'application'
-    id 'com.github.johnrengelman.shadow'
+//    id 'com.github.johnrengelman.shadow'
 }
 
 javafx {
@@ -41,7 +41,7 @@ run {
 }
 
 // Hide tasks
-knows.group = null
+//knows.group = null
 
 jar {
 	archiveVersion = ""
@@ -52,10 +52,10 @@ jar {
     }
 }
 
-shadowJar {
-	destinationDir = file("build/libs/fat")
-	archiveClassifier = "${OS_NAME}"
-}
+//shadowJar {
+//	destinationDir = file("build/libs/fat")
+//	archiveClassifier = "${OS_NAME}"
+//}
 
 task versionlessJar(type: Jar) {
 	archiveVersion = ""

@@ -18,9 +18,6 @@ import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -34,10 +31,12 @@ import de.piegames.blockmap.color.BlockColorMap;
 import de.piegames.blockmap.color.Color;
 import de.piegames.blockmap.generate.ColorMapBuilder.ColorInstruction;
 import de.piegames.blockmap.renderer.BlockState;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ColorCompiler {
 
-	private static Log log = LogFactory.getLog(ColorCompiler.class);
+	private static Logger log = LogManager.getLogger(ColorCompiler.class);
 
 	/**
 	 * Takes in a path to the Minecraft jar file and the path to the json file with the color instructions and compiles all color maps specified

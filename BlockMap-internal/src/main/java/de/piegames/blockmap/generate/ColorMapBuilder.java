@@ -12,18 +12,17 @@ import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import de.piegames.blockmap.MinecraftBlocks;
 import de.piegames.blockmap.color.BlockColorMap;
 import de.piegames.blockmap.color.BlockColorMap.BlockColor;
 import de.piegames.blockmap.renderer.Block;
 import de.piegames.blockmap.renderer.BlockState;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ColorMapBuilder {
 
-	private static Log					log				= LogFactory.getLog(ColorMapBuilder.class);
+	private static Logger log = LogManager.getLogger(ColorMapBuilder.class);
 
 	public boolean						discardTop;
 	public Map<String, List<String>>	placeholders	= new HashMap<>();
