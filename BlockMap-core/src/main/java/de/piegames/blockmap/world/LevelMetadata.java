@@ -13,8 +13,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joml.Vector2d;
 import org.joml.Vector2dc;
 import org.joml.Vector2i;
@@ -60,7 +60,7 @@ import io.gsonfire.annotations.PostSerialize;
  */
 public class LevelMetadata {
 
-	private static Log log = LogFactory.getLog(LevelMetadata.class);
+    private static Logger log = LogManager.getLogger(LevelMetadata.class);
 
 	/** This will be used in the future to keep track of old serialized files. */
 	int version = 0;

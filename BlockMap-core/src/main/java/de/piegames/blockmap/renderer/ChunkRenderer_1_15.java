@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joml.Vector2ic;
 import org.joml.Vector3i;
 import org.joml.Vector3ic;
@@ -34,7 +34,7 @@ import de.piegames.nbt.regionfile.Palette1_13;
  */
 class ChunkRenderer_1_15 extends ChunkRenderer {
 
-	private static Log log = LogFactory.getLog(ChunkRenderer_1_15.class);
+    private static Logger log = LogManager.getLogger(ChunkRenderer_1_15.class);
 
 	public ChunkRenderer_1_15(RenderSettings settings) {
 		super(MinecraftVersion.MC_1_15, settings);

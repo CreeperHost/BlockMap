@@ -29,8 +29,8 @@ import java.util.zip.GZIPOutputStream;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joml.Vector2d;
 import org.joml.Vector2dc;
 import org.joml.Vector2i;
@@ -64,7 +64,7 @@ import net.dongliu.gson.GsonJava8TypeAdapterFactory;
  */
 public abstract class RegionFolder {
 
-	private static Log log = LogFactory.getLog(RegionFolder.class);
+    private static Logger log = LogManager.getLogger(RegionFolder.class);
 
 	public static final Gson GSON = new GsonFireBuilder()
 			.enableExposeMethodParam()

@@ -1,6 +1,6 @@
 plugins {
     id 'application'
-    id 'com.github.johnrengelman.shadow'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 dependencies {
@@ -10,7 +10,6 @@ dependencies {
 	implementation 'net.dongliu:gson-java8-datatype:1.1.0'
 	implementation 'info.picocli:picocli:4.6.2'
 	implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
-	implementation 'org.apache.logging.log4j:log4j-jcl:2.17.1'
 }
 
 application {
@@ -31,6 +30,24 @@ jar {
 shadowJar {
 	destinationDir = file("build/libs/fat")
 	archiveClassifier = ""
+
+    // Yes, 'merge' them. AND relocate them ._.
+    mergeServiceFiles()
+
+    dependencies {
+        exclude(dependency('org.apache.logging.log4j:log4j-core:.*'))
+        exclude(dependency('org.apache.logging.log4j:log4j-api:.*'))
+        exclude(dependency('com.google.code.gson:gson:.*'))
+    }
+
+    relocate 'org.joml', 'de.piegames.blockmap.repack.org.joml'
+    relocate 'io.gsonfire', 'de.piegames.blockmap.repack.io.gsonfire'
+    relocate 'net.dongliu', 'de.piegames.blockmap.repack.net.dongilu'
+    relocate 'picocli', 'de.piegames.blockmap.repack.picocli'
+
+    exclude '/log4j2.xml'
+    exclude '/module-info.class'
+    exclude 'META-INF/versions/**'
 }
 
 task versionlessJar(type: Jar) {

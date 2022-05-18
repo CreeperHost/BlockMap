@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joml.Vector2i;
 import org.joml.Vector2ic;
 
@@ -25,7 +25,7 @@ import de.piegames.blockmap.world.RegionFolder.LocalRegionFolder;
 /** This class contains a collection of methods that transform the rendered map into another, more accessible representation */
 public class PostProcessing {
 
-	private static Log log = LogFactory.getLog(PostProcessing.class);
+    private static Logger log = LogManager.getLogger(PostProcessing.class);
 
 	private PostProcessing() {
 	}

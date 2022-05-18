@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.Callable;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.joml.Vector2ic;
 
@@ -55,7 +55,7 @@ import picocli.CommandLine.Spec;
 		footer = "This is the command line interface of blockmap. To access the GUI (if installed), run `blockmap-gui`.")
 public class CommandLineMain implements Callable<Integer> {
 
-	private static Log log = null;
+    private static Logger log = null;
 
 	public static final Gson GSON = new GsonFireBuilder()
 			.enableExposeMethodParam()
@@ -82,7 +82,7 @@ public class CommandLineMain implements Callable<Integer> {
 	/** Lazily initialize the logger to avoid loading Log4j too early (startup performance). */
 	private static void checkLogger() {
 		if (log == null)
-			log = LogFactory.getLog(CommandLineMain.class);
+			log = LogManager.getLogger(CommandLineMain.class);
 	}
 
 	@Option(names = { "-V", "--version" },

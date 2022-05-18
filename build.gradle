@@ -15,16 +15,16 @@ buildscript {
 	}
 
 	dependencies {
-		classpath "com.jaredsburrows:gradle-license-plugin:0.8.90"
-		classpath "com.github.ben-manes:gradle-versions-plugin:0.41.0"
-		classpath 'com.github.jengelman.gradle.plugins:shadow:6.1.0'
-		classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
-		classpath "org.javamodularity:moduleplugin:1.8.10"
-        classpath 'com.github.johni0702:gradle-reproducible-builds-plugin:a524ada411315aa9b2a58eedcaaa834015e56721'
+//		classpath "com.jaredsburrows:gradle-license-plugin:0.8.90"
+//		classpath "com.github.ben-manes:gradle-versions-plugin:0.41.0"
+//		classpath 'com.github.jengelman.gradle.plugins:shadow:7.1.2'
+//		classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
+//		classpath "org.javamodularity:moduleplugin:1.8.10"
+//        classpath 'com.github.johni0702:gradle-reproducible-builds-plugin:a524ada411315aa9b2a58eedcaaa834015e56721'
 	}
 }
 
-apply plugin: "com.github.ben-manes.versions"
+//apply plugin: "com.github.ben-manes.versions"
 
 allprojects {
 	version = '2.4.1'
@@ -37,9 +37,9 @@ allprojects {
 
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
-	apply plugin: 'org.sonarqube'
-	apply plugin: 'jacoco'
-	apply plugin: 'de.johni0702.reproducible-builds'
+//	apply plugin: 'org.sonarqube'
+//	apply plugin: 'jacoco'
+//	apply plugin: 'de.johni0702.reproducible-builds'
 }
 
 subprojects {
@@ -59,62 +59,62 @@ subprojects {
 			}
 		}
 	}
-
-	def jacocoExecutionDataFiles = fileTree(buildDir).include("/jacoco/*.exec")
-	jacocoTestReport {
-		executionData.from = jacocoExecutionDataFiles
-	}
+//
+//	def jacocoExecutionDataFiles = fileTree(buildDir).include("/jacoco/*.exec")
+//	jacocoTestReport {
+//		executionData.from = jacocoExecutionDataFiles
+//	}
 }
-
-project.tasks["sonarqube"].dependsOn "jacocoRootReport"
-
-task jacocoRootReport(type: JacocoReport) {
-	group 'verification'
-	description = 'Generates an aggregate report from all subprojects'
-	additionalSourceDirs.from = subprojects.sourceSets.main.allSource.srcDirs
-	sourceDirectories.from = subprojects.sourceSets.main.allSource.srcDirs
-	classDirectories.from = subprojects.sourceSets.main.output
-	executionData.from = subprojects.jacocoTestReport.executionData
-	reports {
-		xml.enabled = true
-	}
-}
-
-task regenerate(type: GradleBuild) {
-	group 'Generation'
-	description 'Regenerate all resources except screenshots'
-    // All other generators are called as transitive dependencies
-    tasks = ['BlockMap-internal:generateSources', 'BlockMap-internal:generateData']
-}
-
-task initEclipse(type: GradleBuild) {
-	group 'IDE'
-	tasks = ['regenerate', 'cleanEclipse', 'eclipse']
-}
-
-task initIdea(type: GradleBuild) {
-	group 'IDE'
-	tasks = ['regenerate', 'cleanIdea', 'idea']
-}
-
-task release(type: GradleBuild) {
-	group 'Distribution'
-	description 'Generate a fat jar to publish on GitHub (or to execute) after having run all tests'
-	tasks = ['build', 'previewRelease']
-}
-
-task previewRelease(type: GradleBuild) {
-	group 'Distribution'
-	description 'Generate jar files without running the tests (NOT FOR DEPLOYMENT!)'
-	tasks = [':BlockMap-cli:shadowJar', ':BlockMap-gui:shadowJar']
-}
-
-task copyLibs(type: Copy) {
-	description 'Copy all dependencies into a folder to package this application'
-	from project(':BlockMap-cli').configurations.runtimeClasspath, project(':BlockMap-gui').configurations.runtimeClasspath
-	into "$buildDir/libs"
-}
-
-clean {
-	delete 'screenshots'
-}
+//
+//project.tasks["sonarqube"].dependsOn "jacocoRootReport"
+//
+//task jacocoRootReport(type: JacocoReport) {
+//	group 'verification'
+//	description = 'Generates an aggregate report from all subprojects'
+//	additionalSourceDirs.from = subprojects.sourceSets.main.allSource.srcDirs
+//	sourceDirectories.from = subprojects.sourceSets.main.allSource.srcDirs
+//	classDirectories.from = subprojects.sourceSets.main.output
+//	executionData.from = subprojects.jacocoTestReport.executionData
+//	reports {
+//		xml.enabled = true
+//	}
+//}
+//
+//task regenerate(type: GradleBuild) {
+//	group 'Generation'
+//	description 'Regenerate all resources except screenshots'
+//    // All other generators are called as transitive dependencies
+//    tasks = ['BlockMap-internal:generateSources', 'BlockMap-internal:generateData']
+//}
+//
+//task initEclipse(type: GradleBuild) {
+//	group 'IDE'
+//	tasks = ['regenerate', 'cleanEclipse', 'eclipse']
+//}
+//
+//task initIdea(type: GradleBuild) {
+//	group 'IDE'
+//	tasks = ['regenerate', 'cleanIdea', 'idea']
+//}
+//
+//task release(type: GradleBuild) {
+//	group 'Distribution'
+//	description 'Generate a fat jar to publish on GitHub (or to execute) after having run all tests'
+//	tasks = ['build', 'previewRelease']
+//}
+//
+//task previewRelease(type: GradleBuild) {
+//	group 'Distribution'
+//	description 'Generate jar files without running the tests (NOT FOR DEPLOYMENT!)'
+//	tasks = [':BlockMap-cli:shadowJar', ':BlockMap-gui:shadowJar']
+//}
+//
+//task copyLibs(type: Copy) {
+//	description 'Copy all dependencies into a folder to package this application'
+//	from project(':BlockMap-cli').configurations.runtimeClasspath, project(':BlockMap-gui').configurations.runtimeClasspath
+//	into "$buildDir/libs"
+//}
+//
+//clean {
+//	delete 'screenshots'
+//}
