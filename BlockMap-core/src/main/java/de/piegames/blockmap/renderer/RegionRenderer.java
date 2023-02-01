@@ -158,7 +158,7 @@ public class RegionRenderer {
 					continue;
 				}
 			} catch (RuntimeException e) {
-				log.warn("Failed to render chunk " + chunkPosRegion, e);
+//				log.warn("Failed to render chunk " + chunkPosRegion, e);
 				metadata.put(chunkPos, new ChunkMetadataFailed(chunkPos, e));
 				continue;
 			}
