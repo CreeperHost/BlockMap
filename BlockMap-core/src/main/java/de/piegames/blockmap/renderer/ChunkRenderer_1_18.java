@@ -246,9 +246,9 @@ class ChunkRenderer_1_18 extends ChunkRenderer {
 
 								}
 							} catch (Exception e) {
-								log.warn("Failed to render chunk (" + chunkPosRegion.x() + ", " + chunkPosRegion.y() + ") section " + s
-										+ ". This is very likely because your chunk is corrupt. If possible, please verify it "
-										+ "manually before sending a bug report.", e);
+//								log.warn("Failed to render chunk (" + chunkPosRegion.x() + ", " + chunkPosRegion.y() + ") section " + s
+//										+ ". This is very likely because your chunk is corrupt. If possible, please verify it "
+//										+ "manually before sending a bug report.", e);
 								return new ChunkMetadataFailed(chunkPosWorld, e);
 							}
 							lowestLoadedSection = s;
