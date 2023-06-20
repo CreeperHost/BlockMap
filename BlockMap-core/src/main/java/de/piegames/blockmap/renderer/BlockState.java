@@ -20,7 +20,10 @@ public class BlockState {
 	}
 
 	public int getProperty(String key, String value) {
-		return states.getOrDefault(key, Collections.emptyMap()).get(value);
+		Map<String, Integer> map =  states.getOrDefault(key, Collections.emptyMap());
+		if(map.containsKey(key)) return map.get(key);
+
+		return 0;
 	}
 
 	public BitSet getState(Map<String, String> properties) {
